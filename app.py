@@ -5,7 +5,7 @@ from groq import Groq
 
 # 1. Configuration
 GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
-NICHE_KEYWORD = "SaaS growth"
+NICHE_KEYWORD = "recover stolen crypto"
 
 def find_target_questions(niche):
     print(f"Searching web for top Quora & Reddit threads on: {niche}...")
@@ -65,12 +65,12 @@ if __name__ == "__main__":
         print("No threads found. Attempting generic query...")
         try:
             ddgs = DDGS()
-            fallback = ddgs.text("SaaS marketing strategy reddit", max_results=2)
+            fallback = ddgs.text("recover stolen crypto reddit", max_results=2)
             if fallback:
                 for item in fallback:
                     threads.append({
                         "Platform": "Reddit",
-                        "Title": item.get('title', 'SaaS Growth Strategy'),
+                        "Title": item.get('title', 'Crypto Security Strategy'),
                         "URL": item.get('href', ''),
                         "Snippet": item.get('body', '')
                     })
@@ -81,9 +81,9 @@ if __name__ == "__main__":
         # Guarantee execution even if search is completely blocked/throttled
         threads = [{
             "Platform": "Reddit",
-            "Title": "What are the best SaaS growth strategies for 2026?",
-            "URL": "https://reddit.com/r/SaaS",
-            "Snippet": "Looking for scalable SaaS growth channels."
+            "Title": "What are the legitimate steps to take if crypto is stolen?",
+            "URL": "https://reddit.com/r/CryptoCurrency",
+            "Snippet": "Looking for advice on handling compromised wallets."
         }]
 
     for i, thread in enumerate(threads[:2]):
